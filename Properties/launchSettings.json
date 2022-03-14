@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "WebApplication1": {
+    "WorkTime": {
       "commandName": "Project",
       "launchUrl": "weatherforecast",
       "environmentVariables": {
