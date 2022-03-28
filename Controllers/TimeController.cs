@@ -7,6 +7,7 @@ namespace RestApp.Controllers
     public class TimeIntervals
     {
         public List<List<string>> Time { get; set; }
+        public int ExtraHours { get; set; } = 0;
     }
     public class RemainingClockTime
     {
@@ -49,7 +50,9 @@ namespace RestApp.Controllers
         public Response Post([FromBody] TimeIntervals intervals)
         {
             TimeSpan total = new TimeSpan();
-            DateTime now = DateTime.UtcNow.AddHours(1);
+
+            int extraHours = intervals.ExtraHours < 0 ? 0 : intervals.ExtraHours;
+            DateTime now = DateTime.UtcNow.AddHours(extraHours);
 
             foreach (List<string> interval in intervals.Time)
             {
