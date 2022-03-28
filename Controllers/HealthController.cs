@@ -1,23 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace RestApp.Controllers
-{
-    public class Status
-    {
-        public bool Ok { get; set; }
-    }
+namespace RestApp.Controllers;
 
-    [ApiController]
-    [Route("api/health")]
-    public class HealthController : ControllerBase
+public record Status(bool Ok);
+
+[ApiController]
+[Route("api/health")]
+public class HealthController : ControllerBase
+{
+    [HttpGet]
+    public IActionResult Get()
     {
-        [HttpGet]
-        public IActionResult Get()
-        {
-            return Ok(new Status()
-            {
-                Ok = true,
-            });
-        }
+        return Ok(new Status(true));
     }
 }
